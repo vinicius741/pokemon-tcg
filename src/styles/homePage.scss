@@ -1,4 +1,6 @@
-/* src/styles/HomePage.scss */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
 .home-page {
     padding: 20px;
 
@@ -6,32 +8,55 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 20px;
-
-        .card {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-
-            h3 {
-                margin: 10px 0;
-            }
-        }
     }
 
     .slick-slide {
         display: flex;
         justify-content: center;
+    }
 
-        .card {
-            max-width: 300px;
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        @media (max-width: 767px) {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            max-width: 100%;
         }
     }
 }
