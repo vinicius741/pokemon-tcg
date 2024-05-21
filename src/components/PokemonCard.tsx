@@ -22,7 +22,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ card, key }) => {
                 </div>
                 <h3>{card.name}</h3>
                 <p>ID: {card.id}</p>
-                <p>Tipo: {card.types.join(", ")}</p>
+                <p>Type: {card.types.join(", ")}</p>
             </Link>
         </div>
     );
