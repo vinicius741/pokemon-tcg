@@ -7,9 +7,11 @@ import PokemonCard from "../components/PokemonCard";
 import { useMediaQuery } from "react-responsive";
 import Slider from "react-slick";
 import "../styles/homePage.scss";
+import { useIntl } from "react-intl";
 
 const HomePage: React.FC = () => {
     const dispatch = useAppDispatch();
+    const intl = useIntl();
     const { pokemonCards, loading, error } = useSelector(
         (state: RootState) => state.pokemon
     );
@@ -46,18 +48,22 @@ const HomePage: React.FC = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>{intl.formatMessage({ id: "loading" })}</div>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return (
+            <div>
+                {intl.formatMessage({ id: "error" })} : {error}
+            </div>
+        );
     }
 
     return (
         <div className="home-page">
             <input
                 type="text"
-                placeholder="Search by name"
+                placeholder={intl.formatMessage({ id: "search.placeholder" })}
                 className="search-input"
             />
             {isMobile ? (

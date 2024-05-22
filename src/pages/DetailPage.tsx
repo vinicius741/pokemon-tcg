@@ -66,7 +66,7 @@ const DetailPage: React.FC = () => {
     } | null>(null);
 
     if (!card) {
-        return <div>Card not found</div>;
+        return <div>{intl.formatMessage({ id: "card.Notfund" })}</div>;
     }
 
     return (
