@@ -12,6 +12,9 @@ Follow these instructions to set up and run the project locally.
 
 ```bash
 git clone https://github.com/vinicius741/pokemon-tcg.git
+```
+
+```bash
 cd pokemon-tcg
 ```
 
