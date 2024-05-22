@@ -24,16 +24,6 @@ cd pokemon-tcg
 npm install
 ```
 
-### Scripts
-
-Here are the scripts you can use to work with the project:
-
--   `npm run dev`: Start the development server with Vite.
--   `npm run test`: Run the tests with Jest.
--   `npm run build`: Build the project for production.
--   `npm run lint`: Run ESLint to lint the codebase.
--   `npm run preview`: Preview the production build.
-
 ### Running the Development Server
 
 To start the development server, run:
