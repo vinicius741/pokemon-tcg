@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { usePokemonCards } from "../context/PokemonCardsContext";
 import { useMediaQuery } from "react-responsive";
+import { useIntl } from "react-intl";
 import Slider from "react-slick";
 import "../styles/homePage.scss";
 import PokemonCard from "../components/PokemonCard";
@@ -8,6 +9,7 @@ import PokemonCard from "../components/PokemonCard";
 const HomePage: React.FC = () => {
     const { pokemonCards } = usePokemonCards();
     const [searchTerm, setSearchTerm] = useState("");
+    const intl = useIntl();
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
     const settings = {
@@ -49,7 +51,7 @@ const HomePage: React.FC = () => {
         <div className="home-page">
             <input
                 type="text"
-                placeholder="Search by name"
+                placeholder={intl.formatMessage({ id: "search.placeholder" })}
                 value={searchTerm}
                 onChange={handleSearchChange}
                 className="search-input"

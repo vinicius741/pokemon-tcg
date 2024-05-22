@@ -1,8 +1,8 @@
-// src/pages/DetailPage.tsx
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePokemonCards } from "../context/PokemonCardsContext";
-import "../styles/DetailPage.scss";
+import "../styles/detailPage.scss";
+import { useIntl } from "react-intl";
 
 interface AttackDetailsProps {
     name: string;
@@ -18,29 +18,43 @@ const AttackDetails: React.FC<AttackDetailsProps> = ({
     damage,
     text,
     onClose,
-}) => (
-    <div className="modal">
-        <div className="modal-content">
-            <span className="close" onClick={onClose}>
-                &times;
-            </span>
-            <h2>{name}</h2>
-            <p>
-                <strong>Cost:</strong> {cost.join(", ")}
-            </p>
-            <p>
-                <strong>Damage:</strong> {damage}
-            </p>
-            <p>
-                <strong>Description:</strong> {text}
-            </p>
+}) => {
+    const intl = useIntl();
+    return (
+        <div className="modal">
+            <div className="modal-content">
+                <span className="close" onClick={onClose}>
+                    &times;
+                </span>
+                <h2>{name}</h2>
+                <p>
+                    <strong>
+                        {intl.formatMessage({ id: "attack.cost" })}:
+                    </strong>{" "}
+                    {cost.join(", ")}
+                </p>
+                <p>
+                    <strong>
+                        {intl.formatMessage({ id: "attack.damage" })}:
+                    </strong>{" "}
+                    {damage}
+                </p>
+                <p>
+                    <strong>
+                        {intl.formatMessage({ id: "attack.description" })}:
+                    </strong>{" "}
+                    {text}
+                </p>
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 const DetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const { pokemonCards } = usePokemonCards();
+    const intl = useIntl();
+
     const card = pokemonCards.find((card) => card.id === id);
 
     const [selectedAttack, setSelectedAttack] = useState<{
@@ -58,11 +72,16 @@ const DetailPage: React.FC = () => {
         <div className="detail-page">
             <img src={card.images.large} alt={card.name} />
             <h1>{card.name}</h1>
-            <p>ID: {card.id}</p>
-            <p>Type: {card.types.join(", ")}</p>
+            <p>
+                {intl.formatMessage({ id: "card.id" })}: {card.id}
+            </p>
+            <p>
+                {intl.formatMessage({ id: "card.type" })}:{" "}
+                {card.types.join(", ")}
+            </p>
             {card.resistances && (
                 <p>
-                    Resistances:{" "}
+                    {intl.formatMessage({ id: "card.resistances" })}:{" "}
                     {card.resistances
                         .map(
                             (resistance) =>
@@ -73,7 +92,7 @@ const DetailPage: React.FC = () => {
             )}
             {card.weaknesses && (
                 <p>
-                    Weaknesses:{" "}
+                    {intl.formatMessage({ id: "attack.weaknesses" })}:{" "}
                     {card.weaknesses
                         .map(
                             (weakness) => `${weakness.type}: ${weakness.value}`
@@ -81,15 +100,18 @@ const DetailPage: React.FC = () => {
                         .join(", ")}
                 </p>
             )}
-            <h2>Attacks</h2>
+            <h2>{intl.formatMessage({ id: "attacks.title" })}</h2>
             <ul>
                 {card.attacks?.map((attack) => (
                     <li
                         key={attack.name}
                         onClick={() => setSelectedAttack(attack)}
                     >
-                        <strong>{attack.name}</strong>: {attack.text} (Cost:{" "}
-                        {attack.cost.join(", ")}, Damage: {attack.damage})
+                        <strong>{attack.name}</strong>: {attack.text} (
+                        {intl.formatMessage({ id: "attacks.cost" })}:{" "}
+                        {attack.cost.join(", ")},{" "}
+                        {intl.formatMessage({ id: "attacks.damage" })}:{" "}
+                        {attack.damage})
                     </li>
                 ))}
             </ul>

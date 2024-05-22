@@ -1,0 +1,11 @@
+{
+    "search.placeholder": "Buscar por nome",
+    "card.id": "ID",
+    "card.type": "Tipo",
+    "card.resistances": "Resistências",
+    "card.weaknesses": "Fraquezas",
+    "attacks.title": "Ataques",
+    "attack.cost": "Custo",
+    "attack.damage": "Dano",
+    "attack.description": "Descrição"
+}
