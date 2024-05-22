@@ -1,26 +1,10 @@
 # Pokemon TCG App
 
-A Pokemon Trading Card Game App built with React, TypeScript, Vite, and Redux Toolkit. This app nois deployed at [Pokemon TCG App](https://pokemon-tcg-ais.web.app/).
-
-## Features
-
--   **React**: A JavaScript library for building user interfaces.
--   **TypeScript**: A superset of JavaScript that adds static typing.
--   **Vite**: A fast build tool and development server.
--   **Redux Toolkit**: A library for managing and centralizing application state.
--   **React-Intl**: Internationalization for React apps.
--   **PWA**: Progressive Web App capabilities.
+A Pokemon Trading Card Game App built with React, TypeScript, Vite, and Redux Toolkit. This app is deployed at [Pokemon TCG App](https://pokemon-tcg-ais.web.app/).
 
 ## Getting Started
 
 Follow these instructions to set up and run the project locally.
-
-### Prerequisites
-
-Make sure you have the following installed:
-
--   [Node.js](https://nodejs.org/) (v14 or higher)
--   [npm](https://www.npmjs.com/) (v6 or higher)
 
 ### Installation
 
