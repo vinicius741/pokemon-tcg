@@ -1,30 +1,100 @@
-# React + TypeScript + Vite
+# Pokemon TCG App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Pokemon Trading Card Game App built with React, TypeScript, Vite, and Redux Toolkit. This app nois deployed at [Pokemon TCG App](https://pokemon-tcg-ais.web.app/).
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **React**: A JavaScript library for building user interfaces.
+-   **TypeScript**: A superset of JavaScript that adds static typing.
+-   **Vite**: A fast build tool and development server.
+-   **Redux Toolkit**: A library for managing and centralizing application state.
+-   **React-Intl**: Internationalization for React apps.
+-   **PWA**: Progressive Web App capabilities.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Follow these instructions to set up and run the project locally.
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Make sure you have the following installed:
+
+-   [Node.js](https://nodejs.org/) (v14 or higher)
+-   [npm](https://www.npmjs.com/) (v6 or higher)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/pokemon-tcg-app.git
+cd pokemon-tcg-app
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install the dependencies:
+
+```bash
+npm install
+```
+
+### Scripts
+
+Here are the scripts you can use to work with the project:
+
+-   `npm run dev`: Start the development server with Vite.
+-   `npm run test`: Run the tests with Jest.
+-   `npm run build`: Build the project for production.
+-   `npm run lint`: Run ESLint to lint the codebase.
+-   `npm run preview`: Preview the production build.
+
+### Running the Development Server
+
+To start the development server, run:
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:3000`.
+
+### Building for Production
+
+To build the project for production, run:
+
+```bash
+npm run build
+```
+
+The build output will be in the `dist` directory.
+
+### Previewing the Production Build
+
+To preview the production build, run:
+
+```bash
+npm run preview
+```
+
+### Testing
+
+To run the tests, use:
+
+```bash
+npm run test
+```
+
+### Linting
+
+To lint the codebase, use:
+
+```bash
+npm run lint
+```
+
+### Deployment
+
+The app is deployed at [Pokemon TCG App](https://pokemon-tcg-ais.web.app/).
+
+## License
+
+This project is licensed under the MIT License.
