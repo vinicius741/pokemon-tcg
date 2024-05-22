@@ -6,7 +6,7 @@ describe('Home Page', () => {
   });
 
   it('should display the search input and a Pokémon card', () => {
-    cy.visit('http://localhost:5173/');
+    cy.visit('https://pokemon-tcg-ais.web.app/');
 
     cy.wait('@getPokemonCards');
 
@@ -16,7 +16,7 @@ describe('Home Page', () => {
   });
 
   it('should navigate to detail page when Pokémon card is clicked', () => {
-    cy.visit('http://localhost:5173/');
+    cy.visit('https://pokemon-tcg-ais.web.app/');
 
     cy.wait('@getPokemonCards');
 

@@ -60,12 +60,20 @@ To preview the production build, run:
 npm run preview
 ```
 
-### Testing
+### Unit Testing
 
-To run the tests, use:
+To run the Units tests, use:
 
 ```bash
 npm run test
+```
+
+### E2E testing
+
+To run E2E testing, use:
+
+```bash
+npx cypress run
 ```
 
 ### Linting
