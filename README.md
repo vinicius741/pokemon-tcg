@@ -11,8 +11,8 @@ Follow these instructions to set up and run the project locally.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/pokemon-tcg-app.git
-cd pokemon-tcg-app
+git clone https://github.com/vinicius741/pokemon-tcg.git
+cd pokemon-tcg
 ```
 
 2. Install the dependencies:
