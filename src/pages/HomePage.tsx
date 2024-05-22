@@ -6,7 +6,6 @@ import { RootState } from "../store";
 import PokemonCard from "../components/PokemonCard";
 import { useMediaQuery } from "react-responsive";
 import Slider from "react-slick";
-import "../styles/homePage.scss";
 import { useIntl } from "react-intl";
 
 const HomePage: React.FC = () => {

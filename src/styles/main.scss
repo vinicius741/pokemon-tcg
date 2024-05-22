@@ -1,10 +1,7 @@
-@import "./variables";
-@import "./mixins";
+@import "./themes/variables";
+@import "./themes/mixins";
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: $primary-color;
-}
+@import "./base/body";
+
+@import "./pages/detailPage";
+@import "./pages/homePage";

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/detailPage.scss";
 import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
