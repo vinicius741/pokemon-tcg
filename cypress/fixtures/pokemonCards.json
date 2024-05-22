@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "id": "xy1-1",
+      "name": "Venusaur-EX",
+      "images": {
+        "small": "https://images.pokemontcg.io/xy1/1.png"
+      },
+      "types": [
+        "Grass"
+      ]
+    }
+  ]
+}
