@@ -6,7 +6,6 @@ import { PokemonCardsProvider } from "./context/PokemonCardsContext";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 
-// Mock de dados para os testes
 const mockPokemonCards = [
     {
         id: "xy1-1",
@@ -18,7 +17,6 @@ const mockPokemonCards = [
     },
 ];
 
-// Mock do contexto para fornecer dados simulados
 jest.mock("./context/PokemonCardsContext", () => {
     const originalModule = jest.requireActual("./context/PokemonCardsContext");
     return {
