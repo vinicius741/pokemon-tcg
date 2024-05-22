@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../hooks";
 import { fetchPokemonCards } from "../slices/pokemonSlice";
@@ -15,11 +15,20 @@ const HomePage: React.FC = () => {
     const { pokemonCards, loading, error } = useSelector(
         (state: RootState) => state.pokemon
     );
+    const [searchTerm, setSearchTerm] = useState("");
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
     useEffect(() => {
         dispatch(fetchPokemonCards());
     }, [dispatch]);
+
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredPokemonCards = pokemonCards.filter((card) =>
+        card.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     const settings = {
         dots: false,
@@ -65,16 +74,18 @@ const HomePage: React.FC = () => {
                 type="text"
                 placeholder={intl.formatMessage({ id: "search.placeholder" })}
                 className="search-input"
+                value={searchTerm}
+                onChange={handleSearchChange}
             />
             {isMobile ? (
                 <Slider {...settings}>
-                    {pokemonCards.map((card) => (
+                    {filteredPokemonCards.map((card) => (
                         <PokemonCard key={card.id} card={card} />
                     ))}
                 </Slider>
             ) : (
                 <div className="grid">
-                    {pokemonCards.map((card) => (
+                    {filteredPokemonCards.map((card) => (
                         <PokemonCard key={card.id} card={card} />
                     ))}
                 </div>
