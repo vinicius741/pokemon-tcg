@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../hooks";
 import { fetchPokemonCards } from "../slices/pokemonSlice";
 import { RootState } from "../store";
 import PokemonCard from "../components/PokemonCard";
@@ -8,7 +9,7 @@ import Slider from "react-slick";
 import "../styles/homePage.scss";
 
 const HomePage: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const { pokemonCards, loading, error } = useSelector(
         (state: RootState) => state.pokemon
     );
