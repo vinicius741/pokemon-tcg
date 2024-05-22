@@ -42,8 +42,6 @@ To start the development server, run:
 npm run dev
 ```
 
-The app will be available at `http://localhost:3000`.
-
 ### Building for Production
 
 To build the project for production, run:
