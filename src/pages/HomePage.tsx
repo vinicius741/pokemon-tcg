@@ -58,14 +58,14 @@ const HomePage: React.FC = () => {
             />
             {isMobile ? (
                 <Slider {...settings}>
-                    {filteredAndSortedCards.map((card) => (
-                        <PokemonCard key={card.id} card={card} />
+                    {filteredAndSortedCards.map((card, index) => (
+                        <PokemonCard card={card} key={`${index}-slider`} />
                     ))}
                 </Slider>
             ) : (
                 <div className="grid">
-                    {filteredAndSortedCards.map((card) => (
-                        <PokemonCard key={card.id} card={card} />
+                    {filteredAndSortedCards.map((card, index) => (
+                        <PokemonCard card={card} key={`${index}-grid`} />
                     ))}
                 </div>
             )}

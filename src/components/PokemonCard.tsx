@@ -11,14 +11,13 @@ interface PokemonCardProps {
         };
         types: string[];
     };
-    key: string;
 }
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ card, key }) => {
+const PokemonCard: React.FC<PokemonCardProps> = ({ card }) => {
     const intl = useIntl();
 
     return (
-        <div className="card" key={key}>
+        <div className="card">
             <Link to={`/details/${card.id}`}>
                 <div className="image-container">
                     <img src={card.images.small} alt={card.name} />
