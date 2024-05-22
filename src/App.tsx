@@ -1,5 +1,6 @@
 import React from "react";
-import { PokemonCardsProvider } from "./context/PokemonCardsContext";
+import store from "./store";
+import { Provider } from "react-redux";
 import IntlProviderWrapper from "./IntlProviderWrapper";
 import { Routes, Route } from "react-router-dom";
 
@@ -8,14 +9,14 @@ import DetailPage from "./pages/DetailPage";
 
 const App: React.FC = () => {
     return (
-        <PokemonCardsProvider>
+        <Provider store={store}>
             <IntlProviderWrapper>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/details/:id" element={<DetailPage />} />
                 </Routes>
             </IntlProviderWrapper>
-        </PokemonCardsProvider>
+        </Provider>
     );
 };
 

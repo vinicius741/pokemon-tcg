@@ -1,16 +1,22 @@
-import React, { useState } from "react";
-import { usePokemonCards } from "../context/PokemonCardsContext";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPokemonCards } from "../slices/pokemonSlice";
+import { RootState } from "../store";
+import PokemonCard from "../components/PokemonCard";
 import { useMediaQuery } from "react-responsive";
-import { useIntl } from "react-intl";
 import Slider from "react-slick";
 import "../styles/homePage.scss";
-import PokemonCard from "../components/PokemonCard";
 
 const HomePage: React.FC = () => {
-    const { pokemonCards } = usePokemonCards();
-    const [searchTerm, setSearchTerm] = useState("");
-    const intl = useIntl();
+    const dispatch = useDispatch();
+    const { pokemonCards, loading, error } = useSelector(
+        (state: RootState) => state.pokemon
+    );
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+
+    useEffect(() => {
+        dispatch(fetchPokemonCards());
+    }, [dispatch]);
 
     const settings = {
         dots: false,
@@ -37,35 +43,32 @@ const HomePage: React.FC = () => {
             },
         ],
     };
-    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(event.target.value);
-    };
 
-    const filteredAndSortedCards = pokemonCards
-        .filter((card) =>
-            card.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        .sort((a, b) => a.name.localeCompare(b.name));
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className="home-page">
             <input
                 type="text"
-                placeholder={intl.formatMessage({ id: "search.placeholder" })}
-                value={searchTerm}
-                onChange={handleSearchChange}
+                placeholder="Search by name"
                 className="search-input"
             />
             {isMobile ? (
                 <Slider {...settings}>
-                    {filteredAndSortedCards.map((card, index) => (
-                        <PokemonCard card={card} key={`${index}-slider`} />
+                    {pokemonCards.map((card) => (
+                        <PokemonCard key={card.id} card={card} />
                     ))}
                 </Slider>
             ) : (
                 <div className="grid">
-                    {filteredAndSortedCards.map((card, index) => (
-                        <PokemonCard card={card} key={`${index}-grid`} />
+                    {pokemonCards.map((card) => (
+                        <PokemonCard key={card.id} card={card} />
                     ))}
                 </div>
             )}
