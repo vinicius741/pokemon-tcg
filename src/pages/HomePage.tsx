@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "../hooks";
-import { fetchPokemonCards } from "../slices/pokemonSlice";
-import { RootState } from "../store";
+import React, { useState } from "react";
+import { usePokemonCards } from "../context/PokemonCardsContext";
 import PokemonCard from "../components/PokemonCard";
 import { useMediaQuery } from "react-responsive";
 import Slider from "react-slick";
 import { useIntl } from "react-intl";
 
 const HomePage: React.FC = () => {
-    const dispatch = useAppDispatch();
     const intl = useIntl();
-    const { pokemonCards, loading, error } = useSelector(
-        (state: RootState) => state.pokemon
-    );
+    const { pokemonCards } = usePokemonCards();
     const [searchTerm, setSearchTerm] = useState("");
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-    useEffect(() => {
-        dispatch(fetchPokemonCards());
-    }, [dispatch]);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
@@ -55,17 +45,17 @@ const HomePage: React.FC = () => {
         ],
     };
 
-    if (loading) {
-        return <div>{intl.formatMessage({ id: "loading" })}</div>;
-    }
+    // if (loading) {
+    //     return <div>{intl.formatMessage({ id: "loading" })}</div>;
+    // }
 
-    if (error) {
-        return (
-            <div>
-                {intl.formatMessage({ id: "error" })} : {error}
-            </div>
-        );
-    }
+    // if (error) {
+    //     return (
+    //         <div>
+    //             {intl.formatMessage({ id: "error" })} : {error}
+    //         </div>
+    //     );
+    // }
 
     return (
         <div className="home-page">

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useIntl } from "react-intl";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { usePokemonCards } from "../context/PokemonCardsContext";
 
 interface AttackDetailsProps {
     name: string;
@@ -54,7 +53,7 @@ const DetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const intl = useIntl();
 
-    const { pokemonCards } = useSelector((state: RootState) => state.pokemon);
+    const { pokemonCards } = usePokemonCards();
     const card = pokemonCards.find((card) => card.id === id);
 
     const [selectedAttack, setSelectedAttack] = useState<{
