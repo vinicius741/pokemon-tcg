@@ -1,17 +1,13 @@
-import React, {
-    createContext,
-    useState,
-    useContext,
-    ReactNode,
-    useEffect,
-} from "react";
+import { createContext, useContext, ReactNode } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { PokemonCard } from "../types/PokemonCard";
 import { getPokemonCards } from "../services/pokemonService";
 
 interface PokemonCardsContextProps {
     pokemonCards: PokemonCard[];
-    setPokemonCards: React.Dispatch<React.SetStateAction<PokemonCard[]>>;
-    fetchPokemonCards: () => Promise<void>;
+    isLoading: boolean;
+    isError: boolean;
+    refetch: () => void;
 }
 
 const PokemonCardsContext = createContext<PokemonCardsContextProps | undefined>(
@@ -29,20 +25,17 @@ export const usePokemonCards = (): PokemonCardsContextProps => {
 };
 
 export const PokemonCardsProvider = ({ children }: { children: ReactNode }) => {
-    const [pokemonCards, setPokemonCards] = useState<PokemonCard[]>([]);
+    const { data, isLoading, isError, refetch } = useQuery({
+        queryKey: ["pokemonCards"],
+        queryFn: getPokemonCards,
+        refetchOnWindowFocus: false,
+    });
 
-    const fetchPokemonCards = async () => {
-        const data = await getPokemonCards();
-        setPokemonCards(data.data);
-    };
-
-    useEffect(() => {
-        fetchPokemonCards();
-    }, []);
+    const pokemonCards = data?.data || [];
 
     return (
         <PokemonCardsContext.Provider
-            value={{ pokemonCards, setPokemonCards, fetchPokemonCards }}
+            value={{ pokemonCards, isLoading, isError, refetch }}
         >
             {children}
         </PokemonCardsContext.Provider>
