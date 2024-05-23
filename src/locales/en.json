@@ -8,6 +8,7 @@
     "attack.cost": "Cost",
     "attack.damage": "Damage",
     "attack.description": "Description",
+    "attack.weaknesses": "Weaknesses",
     "loading": "Loading...",
     "error": "Error",
     "card.Notfund": "Card not found"
